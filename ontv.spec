@@ -1,5 +1,5 @@
 %define name	ontv
-%define version	2.6.0
+%define version	2.8.0
 %define release %mkrel 1
 
 Name: %{name}
@@ -36,7 +36,7 @@ TV programs.
 
 %prep
 %setup -q
-%patch0 -p1
+#%patch0 -p1
 #avoids creation of %{_iconsdir}/hicolor/icon-theme.cache
 #this file conflicts with hicolor-icon-theme
 perl -pi -e "s|gtk_update_icon_cache = |gtk_update_icon_cache = #|" data/images/Makefile.in
