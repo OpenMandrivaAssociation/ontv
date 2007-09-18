@@ -1,6 +1,6 @@
 %define name	ontv
 %define version	2.8.0
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name: %{name}
 Summary: TV listings for the GNOME panel
