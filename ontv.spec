@@ -1,6 +1,7 @@
 %define name	ontv
 %define version	2.8.0
-%define release %mkrel 3
+%define release %mkrel 4
+
 
 Name: %{name}
 Summary: TV listings for the GNOME panel
@@ -17,7 +18,11 @@ BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: GConf2
 BuildRequires: perl-XML-Parser
 BuildRequires: pygtk2.0-devel
+%if %mdkversion>=200810
 BuildRequires: gnome-python-devel
+%else
+BuildRequires: gnome-python
+%endif
 BuildRequires: gnome-python-extras
 BuildRequires: python-notify
 BuildRequires: python-vte
