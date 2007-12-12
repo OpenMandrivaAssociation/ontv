@@ -1,6 +1,6 @@
 %define name	ontv
 %define version	2.8.0
-%define release %mkrel 2
+%define release %mkrel 3
 
 Name: %{name}
 Summary: TV listings for the GNOME panel
@@ -17,12 +17,14 @@ BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: GConf2
 BuildRequires: perl-XML-Parser
 BuildRequires: pygtk2.0-devel
-BuildRequires: gnome-python
+BuildRequires: gnome-python-devel
 BuildRequires: gnome-python-extras
 BuildRequires: python-notify
 BuildRequires: python-vte
 #>= 0.16.0-2mdv2007.1
-Requires: GConf2 gnome-python-applet xmltv
+Requires: GConf2
+Requires: gnome-python-applet
+Requires: xmltv-grabbers
 #Requires: gnome-python-gconf
 Requires: gnome-python-gnomevfs
 Requires: python-celementtree
@@ -51,7 +53,7 @@ perl -pi -e "s|sysconfig.get_python_lib\(0|sysconfig.get_python_lib\(1|" configu
 %make
 										
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall
 
 %find_lang %name
@@ -60,12 +62,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %post_install_gconf_schemas %{schemas}
+%update_icon_cache hicolor
 
 %preun
 %preun_uninstall_gconf_schemas %{schemas}
 
+%postun
+%update_icon_cache hicolor
+
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files -f %name.lang
 %defattr(-,root,root)
