@@ -14,7 +14,6 @@ Patch0: ontv-2.6.0-assistant.patch
 URL: http://johan.svedberg.com/projects/coding/ontv/
 License: GPL
 Group: Graphical desktop/GNOME
-BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: GConf2
 BuildRequires: perl-XML-Parser
 BuildRequires: pygtk2.0-devel
