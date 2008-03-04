@@ -1,16 +1,13 @@
 %define name	ontv
-%define version	2.8.0
-%define release %mkrel 4
+%define version	3.0.0
+%define release %mkrel 1
 
 
 Name: %{name}
 Summary: TV listings for the GNOME panel
 Version: %{version}
 Release: %{release}
-Source: http://johan.svedberg.com/projects/coding/ontv/download/%{name}-%{version}.tar.bz2
-Source10: ontv.pot
-Source11: fr.po
-Patch0: ontv-2.6.0-assistant.patch
+Source: http://johan.svedberg.com/projects/coding/ontv/download/%{name}-%{version}.tar.gz
 URL: http://johan.svedberg.com/projects/coding/ontv/
 License: GPL
 Group: Graphical desktop/GNOME
@@ -43,11 +40,9 @@ TV programs.
 
 %prep
 %setup -q
-#%patch0 -p1
 #avoids creation of %{_iconsdir}/hicolor/icon-theme.cache
 #this file conflicts with hicolor-icon-theme
 perl -pi -e "s|gtk_update_icon_cache = |gtk_update_icon_cache = #|" data/images/Makefile.in
-cp -f %{SOURCE10} %{SOURCE11} po/
 #fix x86_64 build:
 perl -pi -e "s|sysconfig.get_python_lib\(0|sysconfig.get_python_lib\(1|" configure
 
