@@ -1,6 +1,6 @@
 %define name	ontv
 %define version	3.0.0
-%define release %mkrel 1
+%define release %mkrel 2
 
 
 Name: %{name}
@@ -8,6 +8,7 @@ Summary: TV listings for the GNOME panel
 Version: %{version}
 Release: %{release}
 Source: http://johan.svedberg.com/projects/coding/ontv/download/%{name}-%{version}.tar.gz
+Patch0: ontv-3.0.0-assistant.patch
 URL: http://johan.svedberg.com/projects/coding/ontv/
 License: GPL
 Group: Graphical desktop/GNOME
@@ -40,6 +41,7 @@ TV programs.
 
 %prep
 %setup -q
+%patch0 -p1
 #avoids creation of %{_iconsdir}/hicolor/icon-theme.cache
 #this file conflicts with hicolor-icon-theme
 perl -pi -e "s|gtk_update_icon_cache = |gtk_update_icon_cache = #|" data/images/Makefile.in
