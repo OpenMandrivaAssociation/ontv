@@ -25,7 +25,6 @@ BuildRequires: gnome-python-extras
 BuildRequires: python-notify
 BuildRequires: python-vte
 BuildRequires: libgnome-window-settings-devel
-#>= 0.16.0-2mdv2007.1
 Requires: GConf2
 Requires: gnome-python-applet
 Requires: xmltv-grabbers
@@ -43,9 +42,6 @@ TV programs.
 %prep
 %setup -q
 %patch0 -p1
-#avoids creation of %{_iconsdir}/hicolor/icon-theme.cache
-#this file conflicts with hicolor-icon-theme
-perl -pi -e "s|gtk_update_icon_cache = |gtk_update_icon_cache = #|" data/images/Makefile.in
 #fix x86_64 build:
 perl -pi -e "s|sysconfig.get_python_lib\(0|sysconfig.get_python_lib\(1|" configure
 
@@ -57,7 +53,7 @@ perl -pi -e "s|sysconfig.get_python_lib\(0|sysconfig.get_python_lib\(1|" configu
 										
 %install
 rm -rf %{buildroot}
-%makeinstall
+%makeinstall_std
 
 %find_lang %name
 
@@ -82,8 +78,9 @@ rm -rf %{buildroot}
 %{_sysconfdir}/gconf/schemas/*
 %{_libdir}/%name
 %{_libdir}/bonobo/servers/*
-%{_libdir}/python*/site-packages/%name
+%{py_platsitedir}/%name
 %{_datadir}/%name
 %{_datadir}/gnome-2.0/ui/*.xml
+%{_datadir}/gnome-control-center/keybindings/90-%name.xml
 %{_iconsdir}/hicolor/*
 
