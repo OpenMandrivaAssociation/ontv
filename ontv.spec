@@ -1,6 +1,6 @@
 %define name	ontv
 %define version	3.0.0
-%define release %mkrel 2
+%define release %mkrel 3
 
 
 Name: %{name}
@@ -24,6 +24,7 @@ BuildRequires: gnome-python
 BuildRequires: gnome-python-extras
 BuildRequires: python-notify
 BuildRequires: python-vte
+BuildRequires: libgnome-window-settings-devel
 #>= 0.16.0-2mdv2007.1
 Requires: GConf2
 Requires: gnome-python-applet
