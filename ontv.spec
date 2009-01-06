@@ -1,6 +1,6 @@
 %define name	ontv
 %define version	3.0.0
-%define release %mkrel 4
+%define release %mkrel 5
 
 
 Name: %{name}
