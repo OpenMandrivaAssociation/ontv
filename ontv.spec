@@ -56,6 +56,8 @@ perl -pi -e "s|python2.5|python2.6|" scripts/ontv.in
 rm -rf %{buildroot}
 %makeinstall_std
 
+rm -rf %{buildroot}%{py_platsitedir}/%{name}/keybinder/_keybinder.a
+
 %find_lang %{name}
 
 %define schemas %{name}
