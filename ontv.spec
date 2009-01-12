@@ -26,8 +26,8 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 Requires:	xmltv
 Requires:	xmltv-grabbers
-Requires:       GConf2
-Requires:       gnome-python-applet
+Requires:	GConf2
+Requires:	gnome-python-applet
 Requires:	gnome-python-gnomevfs
 Requires:	dbus-python
 Requires:	python-notify
