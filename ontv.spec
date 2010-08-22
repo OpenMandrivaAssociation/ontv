@@ -1,13 +1,13 @@
 Name:			ontv
-Version:		3.0.0
-Release:		%mkrel 7
+Version:		3.2.0
+Release:		%mkrel 1
 
 Summary:	TV listings for the GNOME panel
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 URL:		ftp://ftp.gnome.org/pub/GNOME/sources/ontv
 
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/ontv/3.0/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/ontv/3.0/%{name}-%{version}.tar.bz2
 Patch0:		ontv-3.0.0-assistant.patch
 
 BuildRequires:	GConf2
@@ -39,24 +39,14 @@ TV programs.
 
 %prep
 %setup -q
-%patch0 -p1
-#fix x86_64 build:
-perl -pi -e "s|sysconfig.get_python_lib\(0|sysconfig.get_python_lib\(1|" configure
-%if %mdkversion >= 200910
-perl -pi -e "s|python2.5|python2.6|" scripts/ontv.in
-%endif
 
 %build
-#schemas install is not needed and produces garbage output while building
 %configure2_5x --disable-schemas-install
-
 %make
 										
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-
-rm -rf %{buildroot}%{py_platsitedir}/%{name}/keybinder/_keybinder.a
 
 %find_lang %{name}
 
@@ -79,11 +69,13 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc AUTHORS FAQ README NEWS THANKS TODO
 %{_sysconfdir}/gconf/schemas/*
-%{_libdir}/%{name}
 %{_libdir}/bonobo/servers/*
-%{py_platsitedir}/%{name}
+%{_bindir}/*
+%{_libexecdir}/ontv-applet
+%{python_sitelib}/%name
 %{_datadir}/%{name}
 %{_datadir}/gnome-2.0/ui/*.xml
+%{_datadir}/applications/ontv.desktop
 %{_datadir}/gnome-control-center/keybindings/90-%{name}.xml
 %{_iconsdir}/hicolor/*
 
