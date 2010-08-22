@@ -22,6 +22,7 @@ BuildRequires:	gnome-python-extras
 BuildRequires:	python-notify
 BuildRequires:	python-vte
 BuildRequires:	libgnome-window-settings-devel
+BuildRequires:	intltool
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 Requires:	xmltv
