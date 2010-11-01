@@ -1,6 +1,6 @@
 Name:			ontv
 Version:		3.2.0
-Release:		%mkrel 1
+Release:		%mkrel 2
 
 Summary:	TV listings for the GNOME panel
 License:	GPLv2+
