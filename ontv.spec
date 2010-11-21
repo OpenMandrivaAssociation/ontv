@@ -1,6 +1,6 @@
 Name:			ontv
 Version:		3.2.0
-Release:		%mkrel 2
+Release:		%mkrel 3
 
 Summary:	TV listings for the GNOME panel
 License:	GPLv2+
@@ -78,5 +78,4 @@ rm -rf %{buildroot}
 %{_datadir}/gnome-2.0/ui/*.xml
 %{_datadir}/applications/ontv.desktop
 %{_datadir}/gnome-control-center/keybindings/90-%{name}.xml
-%{_iconsdir}/hicolor/*
-
+%{_iconsdir}/hicolor/*/apps/%{name}.*
