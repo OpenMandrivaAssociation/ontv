@@ -10,6 +10,11 @@ URL:		ftp://ftp.gnome.org/pub/GNOME/sources/ontv
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/ontv/3.0/%{name}-%{version}.tar.bz2
 Patch0:		ontv-3.0.0-assistant.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	GConf2
 BuildRequires:	perl-XML-Parser
 BuildRequires:	pygtk2.0-devel
